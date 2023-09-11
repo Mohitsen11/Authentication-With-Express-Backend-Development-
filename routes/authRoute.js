@@ -1,0 +1,12 @@
+const express = require('express');
+const { signup, signin, getUser, logout } = require('../controller/authController');
+const jwtAuth = require('../middleware/jwtAuth.js');
+
+const authRouter = express.Router();
+
+authRouter.post('/signup' , signup);
+authRouter.post('/signin' , signin);
+authRouter.get('/user', jwtAuth ,getUser);
+authRouter.get('/logout' , logout);
+
+module.exports = authRouter;
